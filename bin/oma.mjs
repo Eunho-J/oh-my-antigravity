@@ -71,7 +71,7 @@ function workspaceInfo(target = process.cwd()) {
 }
 
 function printHelp() {
-  console.log(`oh-my-antigravity (oma) ${VERSION}\n\nUsage:\n  oma                 Show help\n  oma version         Show version\n  oma doctor [--json] Check Antigravity / antigravity-cli runtime assumptions\n  oma setup [path]    Create a minimal .oma workspace scaffold\n  oma status [path]   Show current .oma workspace status\n  oma inventory [--json]\n                      Show omx-to-oma command port classification\n  oma catalog [--json]\n                      Show omx skills/prompts/hooks migration catalog\n\nCurrent status:\n  Initial porting scaffold. Runtime integration targets Antigravity / antigravity-cli, not Codex.`);
+  console.log(`oh-my-antigravity (oma) ${VERSION}\n\nUsage:\n  oma                 Show help\n  oma version         Show version\n  oma doctor [--json] Check Antigravity / antigravity-cli runtime assumptions\n  oma setup [path]    Create a minimal .oma workspace scaffold\n  oma status [path]   Show current .oma workspace status\n  oma inventory [--json]\n                      Show omx-to-oma command port classification\n  oma catalog [--json]\n                      Show omx skills/prompts/hooks migration catalog\n  oma skills [--json]\n                      List staged read-only skill candidates\n\nCurrent status:\n  Initial porting scaffold. Runtime integration targets Antigravity / antigravity-cli, not Codex.`);
 }
 
 function doctor() {
@@ -122,6 +122,22 @@ function setup() {
 function readJsonDoc(name) {
   const path = join(REPO_ROOT, 'docs', name);
   return { path, data: JSON.parse(readFileSync(path, 'utf8')) };
+}
+
+
+function skills() {
+  const { path, data } = readJsonDoc('../skills/manifest.json');
+  if (hasFlag('--json')) {
+    console.log(JSON.stringify({ ok: true, path, skills: data }, null, 2));
+    return 0;
+  }
+  console.log(`oma ${VERSION} skills`);
+  console.log(`- status: ${data.status}`);
+  console.log(`- install enabled: ${data.install_enabled}`);
+  for (const item of data.candidates) {
+    console.log(`- ${item.name}: ${item.status} (${item.path})`);
+  }
+  return 0;
 }
 
 function catalog() {
@@ -212,6 +228,9 @@ switch (command) {
     break;
   case 'catalog':
     exitCode = catalog();
+    break;
+  case 'skills':
+    exitCode = skills();
     break;
   default:
     console.error(`Unknown command: ${command}`);

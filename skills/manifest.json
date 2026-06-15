@@ -1,0 +1,64 @@
+{
+  "schema": "oma.skill_manifest.v1",
+  "status": "staged-read-only",
+  "source": "oh-my-codex skills candidate subset",
+  "generated_at_kst": "2026-06-15",
+  "runtime_target": "antigravity-cli",
+  "install_enabled": false,
+  "candidates": [
+    {
+      "name": "ai-slop-cleaner",
+      "path": "skills/omx-candidates/ai-slop-cleaner/SKILL.md",
+      "status": "staged_read_only",
+      "enablement_gate": "Antigravity command/path adaptation required before runtime install"
+    },
+    {
+      "name": "ask",
+      "path": "skills/omx-candidates/ask/SKILL.md",
+      "status": "staged_read_only",
+      "enablement_gate": "Antigravity command/path adaptation required before runtime install"
+    },
+    {
+      "name": "autoresearch",
+      "path": "skills/omx-candidates/autoresearch/SKILL.md",
+      "status": "staged_read_only",
+      "enablement_gate": "Antigravity command/path adaptation required before runtime install"
+    },
+    {
+      "name": "best-practice-research",
+      "path": "skills/omx-candidates/best-practice-research/SKILL.md",
+      "status": "staged_read_only",
+      "enablement_gate": "Antigravity command/path adaptation required before runtime install"
+    },
+    {
+      "name": "cancel",
+      "path": "skills/omx-candidates/cancel/SKILL.md",
+      "status": "staged_read_only",
+      "enablement_gate": "Antigravity command/path adaptation required before runtime install"
+    },
+    {
+      "name": "design",
+      "path": "skills/omx-candidates/design/SKILL.md",
+      "status": "staged_read_only",
+      "enablement_gate": "Antigravity command/path adaptation required before runtime install"
+    },
+    {
+      "name": "git-master",
+      "path": "skills/omx-candidates/git-master/SKILL.md",
+      "status": "staged_read_only",
+      "enablement_gate": "Antigravity command/path adaptation required before runtime install"
+    },
+    {
+      "name": "ultraqa",
+      "path": "skills/omx-candidates/ultraqa/SKILL.md",
+      "status": "staged_read_only",
+      "enablement_gate": "Antigravity command/path adaptation required before runtime install"
+    },
+    {
+      "name": "wiki",
+      "path": "skills/omx-candidates/wiki/SKILL.md",
+      "status": "staged_read_only",
+      "enablement_gate": "Antigravity command/path adaptation required before runtime install"
+    }
+  ]
+}

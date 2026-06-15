@@ -46,3 +46,8 @@
 ## 7. Skills / prompts / hooks 카탈로그
 
 정형 카탈로그는 [`docs/omx-catalog-inventory.json`](./omx-catalog-inventory.json)에 둔다. `oma catalog`는 `omx`의 skills, prompts/subagents, hook modules를 읽기 전용으로 분류한다. 아직 runtime 이식이 아니라 migration control plane이다.
+
+
+## 8. Skill staging
+
+1차 후보 skill은 `skills/omx-candidates/` 아래에 읽기 전용 staging copy로 둔다. `skills/manifest.json`의 `install_enabled=false`가 현재 안전핀이다. Antigravity 명령/상태 경로로 각 skill을 개작하기 전에는 runtime install 기능을 열지 않는다.
