@@ -60,5 +60,14 @@
       "status": "staged_read_only",
       "enablement_gate": "Antigravity command/path adaptation required before runtime install"
     }
+  ],
+  "adapted_candidates": [
+    {
+      "name": "ai-slop-cleaner",
+      "path": "skills/adapted/ai-slop-cleaner/SKILL.md",
+      "status": "adapted_candidate",
+      "install_enabled": false,
+      "enablement_gate": "Runtime install command and Antigravity skill target path are not implemented yet"
+    }
   ]
 }

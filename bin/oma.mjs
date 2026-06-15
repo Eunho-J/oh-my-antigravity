@@ -198,6 +198,9 @@ function skills() {
   for (const item of data.candidates) {
     console.log(`- ${item.name}: ${item.status} (${item.path})`);
   }
+  for (const item of data.adapted_candidates ?? []) {
+    console.log(`- ${item.name}: ${item.status} (${item.path})`);
+  }
   return 0;
 }
 
