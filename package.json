@@ -1,0 +1,24 @@
+{
+  "name": "oh-my-antigravity",
+  "version": "0.1.0",
+  "description": "Oh My Antigravity (oma): Antigravity CLI companion inspired by oh-my-codex.",
+  "type": "module",
+  "bin": {
+    "oma": "./bin/oma.mjs"
+  },
+  "scripts": {
+    "test": "node --check bin/oma.mjs && node bin/oma.mjs doctor --json",
+    "doctor": "node bin/oma.mjs doctor"
+  },
+  "keywords": [
+    "antigravity",
+    "agy",
+    "agent",
+    "cli",
+    "mcp"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  }
+}
