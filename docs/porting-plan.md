@@ -8,7 +8,7 @@
 
 - `oma doctor`: `antigravity-cli`/`agy` alias, `node`, MCP schema directory, workspace 쓰기 가능 여부 진단
 - `oma setup`: `.oma/` 작업 상태 디렉터리와 Antigravity 친화 템플릿 생성
-- `oma status`: 현재 workspace의 `.oma` 상태와 agy 실행 표면 요약
+- `oma status`: 현재 workspace의 `.oma` 상태와 `antigravity-cli`/`agy` 호환 실행 표면 요약
 - `oma mcp-serve`: 필요한 경우 oma 전용 report-only MCP 도구 노출
 
 ## 3. 포팅 금지선
@@ -33,4 +33,5 @@
 1. `omx`의 실제 설치 산출물 목록 작성.
 2. Antigravity에서 대응 가능한 표면과 불가능한 표면 분리.
 3. `oma doctor`에 MCP/config/schema 진단 추가.
-4. 최소 npm 패키지 배포 가능성 검증.
+4. `oma status`를 workspace 상태와 runtime alias 진단의 표준 보고면으로 확장.
+5. 최소 npm 패키지 배포 가능성 검증.
