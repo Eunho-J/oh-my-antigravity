@@ -18,18 +18,19 @@ function findExecutable(name) {
 }
 
 function printHelp() {
-  console.log(`oh-my-antigravity (oma) ${VERSION}\n\nUsage:\n  oma                 Show help\n  oma version         Show version\n  oma doctor [--json] Check Antigravity-facing runtime assumptions\n  oma setup [path]    Create a minimal .oma workspace scaffold\n\nCurrent status:\n  Initial porting scaffold. Runtime integration targets Antigravity/agy, not Codex.`);
+  console.log(`oh-my-antigravity (oma) ${VERSION}\n\nUsage:\n  oma                 Show help\n  oma version         Show version\n  oma doctor [--json] Check Antigravity-facing runtime assumptions\n  oma setup [path]    Create a minimal .oma workspace scaffold\n\nCurrent status:\n  Initial porting scaffold. Runtime integration targets Antigravity / antigravity-cli, not Codex.`);
 }
 
 function doctor() {
+  const antigravityCliPath = findExecutable('antigravity-cli');
   const agyPath = findExecutable('agy');
   const nodePath = findExecutable('node');
   const payload = {
-    ok: Boolean(agyPath && nodePath),
+    ok: Boolean((antigravityCliPath || agyPath) && nodePath),
     oma_version: VERSION,
     checks: {
       node: { ok: Boolean(nodePath), path: nodePath },
-      agy: { ok: Boolean(agyPath), path: agyPath },
+      antigravity_cli: { ok: Boolean(antigravityCliPath || agyPath), path: antigravityCliPath ?? agyPath, alias: antigravityCliPath ? 'antigravity-cli' : (agyPath ? 'agy' : null) },
     },
     notes: [
       'oma is an Antigravity port scaffold; Codex-specific hooks and state paths are intentionally not enabled yet.',
@@ -41,7 +42,7 @@ function doctor() {
   }
   console.log(`oma ${VERSION} doctor`);
   console.log(`- node: ${nodePath ? `ok (${nodePath})` : 'missing'}`);
-  console.log(`- agy: ${agyPath ? `ok (${agyPath})` : 'missing'}`);
+  console.log(`- antigravity-cli: ${antigravityCliPath ? `ok (${antigravityCliPath})` : (agyPath ? `ok via agy alias (${agyPath})` : 'missing')}`);
   console.log('- status: initial Antigravity port scaffold');
   return payload.ok ? 0 : 1;
 }

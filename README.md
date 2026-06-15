@@ -1,8 +1,8 @@
 # oh-my-antigravity (`oma`)
 
-`oh-my-antigravity`는 `oh-my-codex(omx)`의 운영 철학을 Antigravity/`agy` 환경으로 이식하기 위한 공개 프로젝트다.
+`oh-my-antigravity`는 `oh-my-codex(omx)`의 운영 철학을 Antigravity / `antigravity-cli` 환경으로 이식하기 위한 공개 프로젝트다.
 
-목표는 Codex 전용 가정(`codex`, `.codex`, Codex hook/goal/state 표면)을 제거하고, Antigravity의 실행 모델과 MCP 설정 표면에 맞춘 보조 CLI `oma`를 제공하는 것이다.
+목표는 Codex 전용 가정(`codex`, `.codex`, Codex hook/goal/state 표면)을 제거하고, **Antigravity / `antigravity-cli`**의 실행 모델과 MCP 설정 표면에 맞춘 보조 CLI `oma`를 제공하는 것이다. 현재 로컬 실행 바이너리명이 `agy`로 노출되는 환경도 `antigravity-cli` 계열 호환 표면으로 취급하되, 프로젝트 문서와 설계 목표 명칭은 `antigravity-cli`로 고정한다.
 
 ## 현재 상태
 
@@ -32,6 +32,6 @@ oma setup /path/to/project
 ## 원칙
 
 - 실행 명령은 `oma`다.
-- 대상 런타임은 Antigravity/`agy`다.
+- 대상 런타임은 Antigravity / `antigravity-cli`다. 로컬 alias가 `agy`인 경우에도 `antigravity-cli` 호환 실행면으로 감지한다.
 - Codex 전용 경로와 상태 파일은 직접 재사용하지 않는다.
 - Antigravity 내부 config 보호 경계는 우회하지 않는다. 읽기가 차단되면 schema directory, operator evidence, runtime receipt 같은 대체 증거를 사용한다.
