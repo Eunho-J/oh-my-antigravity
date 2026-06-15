@@ -71,7 +71,7 @@ function workspaceInfo(target = process.cwd()) {
 }
 
 function printHelp() {
-  console.log(`oh-my-antigravity (oma) ${VERSION}\n\nUsage:\n  oma                 Show help\n  oma version         Show version\n  oma doctor [--json] Check Antigravity / antigravity-cli runtime assumptions\n  oma setup [path]    Create a minimal .oma workspace scaffold\n  oma status [path]   Show current .oma workspace status\n  oma inventory [--json]\n                      Show omx-to-oma command port classification\n  oma catalog [--json]\n                      Show omx skills/prompts/hooks migration catalog\n  oma skills [--json]\n                      List staged read-only skill candidates\n\nCurrent status:\n  Initial porting scaffold. Runtime integration targets Antigravity / antigravity-cli, not Codex.`);
+  console.log(`oh-my-antigravity (oma) ${VERSION}\n\nUsage:\n  oma                 Show help\n  oma version         Show version\n  oma doctor [--json] Check Antigravity / antigravity-cli runtime assumptions\n  oma setup [path]    Create a minimal .oma workspace scaffold\n  oma status [path]   Show current .oma workspace status\n  oma inventory [--json]\n                      Show omx-to-oma command port classification\n  oma catalog [--json]\n                      Show omx skills/prompts/hooks migration catalog\n  oma skills [--json]\n                      List staged read-only skill candidates\n  oma skills --audit [--json]\n                      Audit staged skills for OMX/Codex coupling\n\nCurrent status:\n  Initial porting scaffold. Runtime integration targets Antigravity / antigravity-cli, not Codex.`);
 }
 
 function doctor() {
@@ -125,7 +125,68 @@ function readJsonDoc(name) {
 }
 
 
+
+function auditSkillFiles() {
+  const manifestPath = join(REPO_ROOT, 'skills', 'manifest.json');
+  const manifest = JSON.parse(readFileSync(manifestPath, 'utf8'));
+  const patterns = [
+    { id: 'omx_command', severity: 'adapt', regex: /\bomx\s+[a-z-]+|\$[a-z-]+/g },
+    { id: 'omx_state_path', severity: 'adapt', regex: /\.omx\//g },
+    { id: 'codex_reference', severity: 'redesign', regex: /\bCodex\b|\bcodex\b|\.codex/g },
+    { id: 'goal_tool_reference', severity: 'redesign', regex: /\b(create_goal|get_goal|update_goal)\b/g },
+    { id: 'tmux_reference', severity: 'research', regex: /\btmux\b/g },
+  ];
+  const reports = manifest.candidates.map((item) => {
+    const filePath = join(REPO_ROOT, item.path);
+    const text = readFileSync(filePath, 'utf8');
+    const findings = patterns.flatMap((pattern) => {
+      const matches = [...text.matchAll(pattern.regex)].map((match) => match[0]);
+      if (matches.length === 0) return [];
+      return [{
+        pattern: pattern.id,
+        severity: pattern.severity,
+        count: matches.length,
+        samples: [...new Set(matches)].slice(0, 8),
+      }];
+    });
+    const hasRedesign = findings.some((finding) => finding.severity === 'redesign');
+    const hasAdapt = findings.some((finding) => finding.severity === 'adapt' || finding.severity === 'research');
+    return {
+      name: item.name,
+      path: item.path,
+      migration_readiness: hasRedesign ? 'requires_redesign' : (hasAdapt ? 'requires_adaptation' : 'portable_candidate'),
+      findings,
+    };
+  });
+  return {
+    schema: 'oma.skill_audit.v1',
+    install_enabled: manifest.install_enabled,
+    scanned_skills: reports.length,
+    summary: {
+      portable_candidate: reports.filter((report) => report.migration_readiness === 'portable_candidate').length,
+      requires_adaptation: reports.filter((report) => report.migration_readiness === 'requires_adaptation').length,
+      requires_redesign: reports.filter((report) => report.migration_readiness === 'requires_redesign').length,
+    },
+    reports,
+  };
+}
+
 function skills() {
+  if (hasFlag('--audit')) {
+    const audit = auditSkillFiles();
+    if (hasFlag('--json')) {
+      console.log(JSON.stringify({ ok: true, audit }, null, 2));
+      return 0;
+    }
+    console.log(`oma ${VERSION} skills audit`);
+    console.log(`- install enabled: ${audit.install_enabled}`);
+    console.log(`- scanned: ${audit.scanned_skills}`);
+    console.log(`- readiness: ${audit.summary.portable_candidate} portable / ${audit.summary.requires_adaptation} adaptation / ${audit.summary.requires_redesign} redesign`);
+    for (const report of audit.reports) {
+      console.log(`- ${report.name}: ${report.migration_readiness}`);
+    }
+    return 0;
+  }
   const { path, data } = readJsonDoc('../skills/manifest.json');
   if (hasFlag('--json')) {
     console.log(JSON.stringify({ ok: true, path, skills: data }, null, 2));
