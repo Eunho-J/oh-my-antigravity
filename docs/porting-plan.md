@@ -41,3 +41,8 @@
 ## 6. 1차 인벤토리
 
 정형 인벤토리는 [`docs/omx-port-inventory.json`](./omx-port-inventory.json)에 둔다. `oma inventory`는 이 장부를 읽어 사람이 보는 요약 또는 `--json` 출력을 제공한다.
+
+
+## 7. Skills / prompts / hooks 카탈로그
+
+정형 카탈로그는 [`docs/omx-catalog-inventory.json`](./omx-catalog-inventory.json)에 둔다. `oma catalog`는 `omx`의 skills, prompts/subagents, hook modules를 읽기 전용으로 분류한다. 아직 runtime 이식이 아니라 migration control plane이다.

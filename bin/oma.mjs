@@ -71,7 +71,7 @@ function workspaceInfo(target = process.cwd()) {
 }
 
 function printHelp() {
-  console.log(`oh-my-antigravity (oma) ${VERSION}\n\nUsage:\n  oma                 Show help\n  oma version         Show version\n  oma doctor [--json] Check Antigravity / antigravity-cli runtime assumptions\n  oma setup [path]    Create a minimal .oma workspace scaffold\n  oma status [path]   Show current .oma workspace status\n  oma inventory [--json]\n                      Show omx-to-oma port classification\n\nCurrent status:\n  Initial porting scaffold. Runtime integration targets Antigravity / antigravity-cli, not Codex.`);
+  console.log(`oh-my-antigravity (oma) ${VERSION}\n\nUsage:\n  oma                 Show help\n  oma version         Show version\n  oma doctor [--json] Check Antigravity / antigravity-cli runtime assumptions\n  oma setup [path]    Create a minimal .oma workspace scaffold\n  oma status [path]   Show current .oma workspace status\n  oma inventory [--json]\n                      Show omx-to-oma command port classification\n  oma catalog [--json]\n                      Show omx skills/prompts/hooks migration catalog\n\nCurrent status:\n  Initial porting scaffold. Runtime integration targets Antigravity / antigravity-cli, not Codex.`);
 }
 
 function doctor() {
@@ -117,6 +117,28 @@ function setup() {
   return 0;
 }
 
+
+
+function readJsonDoc(name) {
+  const path = join(REPO_ROOT, 'docs', name);
+  return { path, data: JSON.parse(readFileSync(path, 'utf8')) };
+}
+
+function catalog() {
+  const { path, data } = readJsonDoc('omx-catalog-inventory.json');
+  if (hasFlag('--json')) {
+    console.log(JSON.stringify({ ok: true, path, catalog: data }, null, 2));
+    return 0;
+  }
+  console.log(`oma ${VERSION} catalog`);
+  console.log(`- source: ${data.source.package} ${data.source.observed_version}`);
+  console.log(`- target: ${data.target.package} (${data.target.bin}) -> ${data.target.runtime}`);
+  console.log(`- skills: ${data.summary.skills_total} total / ${data.summary.skill_candidates} candidates / ${data.summary.skill_requires_redesign} redesign / ${data.summary.skill_low_priority} low-priority`);
+  console.log(`- prompts: ${data.summary.prompts_total} prompt files`);
+  console.log(`- hooks: ${data.summary.hooks_total} hook modules require Antigravity hook-surface mapping`);
+  console.log(`- next: ${data.next_steps[0]}`);
+  return 0;
+}
 
 function readInventory() {
   const path = join(REPO_ROOT, 'docs', 'omx-port-inventory.json');
@@ -187,6 +209,9 @@ switch (command) {
     break;
   case 'inventory':
     exitCode = inventory();
+    break;
+  case 'catalog':
+    exitCode = catalog();
     break;
   default:
     console.error(`Unknown command: ${command}`);

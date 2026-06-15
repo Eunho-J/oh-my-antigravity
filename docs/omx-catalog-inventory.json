@@ -1,0 +1,1142 @@
+{
+  "schema": "oma.omx_catalog_inventory.v1",
+  "source": {
+    "package": "oh-my-codex",
+    "observed_version": "0.18.8",
+    "observed_at_kst": "2026-06-15"
+  },
+  "target": {
+    "package": "oh-my-antigravity",
+    "bin": "oma",
+    "runtime": "antigravity-cli"
+  },
+  "summary": {
+    "skills_total": 46,
+    "prompts_total": 37,
+    "hooks_total": 102,
+    "skill_candidates": 9,
+    "skill_requires_redesign": 21,
+    "skill_low_priority": 16
+  },
+  "skills": [
+    {
+      "name": "ai-slop-cleaner",
+      "category": "shortcut",
+      "status": "active",
+      "core": false,
+      "codex_coupling": false,
+      "migration_status": "candidate",
+      "description": "Run an anti-slop cleanup/refactor/deslop workflow"
+    },
+    {
+      "name": "analyze",
+      "category": "shortcut",
+      "status": "active",
+      "core": false,
+      "codex_coupling": true,
+      "migration_status": "requires_antigravity_redesign",
+      "description": "Run read-only deep repository analysis and return a ranked synthesis with explicit confidence, concrete file references, and clear evidence-vs-inference boundaries. Use when a user says 'analyze', 'investigate', 'why does', 'what's causing', or needs grounded cross-file explanation before any changes are proposed."
+    },
+    {
+      "name": "ask-claude",
+      "category": "shortcut",
+      "status": "deprecated",
+      "core": false,
+      "codex_coupling": false,
+      "migration_status": "low_priority",
+      "description": "Deprecated compatibility shim for Claude advisor requests"
+    },
+    {
+      "name": "ask-gemini",
+      "category": "shortcut",
+      "status": "deprecated",
+      "core": false,
+      "codex_coupling": false,
+      "migration_status": "low_priority",
+      "description": "Deprecated compatibility shim for Gemini advisor requests"
+    },
+    {
+      "name": "ask",
+      "category": "shortcut",
+      "status": "active",
+      "core": false,
+      "codex_coupling": false,
+      "migration_status": "candidate",
+      "description": "Ask a local external advisor CLI (Claude or Gemini) and capture a reusable artifact"
+    },
+    {
+      "name": "autopilot",
+      "category": "execution",
+      "status": "active",
+      "core": true,
+      "codex_coupling": true,
+      "migration_status": "requires_antigravity_redesign",
+      "description": "[OMX] Strict autonomous loop: $deep-interview -> $ralplan -> $ultragoal (+ $team if needed) -> $code-review -> $ultraqa"
+    },
+    {
+      "name": "autoresearch-goal",
+      "category": "execution",
+      "status": "active",
+      "core": false,
+      "codex_coupling": true,
+      "migration_status": "requires_antigravity_redesign",
+      "description": "Durable professor-critic research workflow over Codex goal mode without reviving deprecated omx autoresearch"
+    },
+    {
+      "name": "autoresearch",
+      "category": "execution",
+      "status": "active",
+      "core": false,
+      "codex_coupling": false,
+      "migration_status": "candidate",
+      "description": "Stateful validator-gated research loop with native-hook persistence"
+    },
+    {
+      "name": "best-practice-research",
+      "category": "planning",
+      "status": "active",
+      "core": false,
+      "codex_coupling": false,
+      "migration_status": "candidate",
+      "description": "[OMX] Bounded best-practice research wrapper using official/upstream evidence first"
+    },
+    {
+      "name": "build-fix",
+      "category": "shortcut",
+      "status": "deprecated",
+      "core": false,
+      "codex_coupling": false,
+      "migration_status": "low_priority",
+      "description": "Build Fix deprecated shim"
+    },
+    {
+      "name": "cancel",
+      "category": "utility",
+      "status": "active",
+      "core": false,
+      "codex_coupling": false,
+      "migration_status": "candidate",
+      "description": "Cancel any active OMX mode (autopilot, ralph, ultrawork, ecomode, ultraqa, swarm, ultrapilot, pipeline, team)"
+    },
+    {
+      "name": "code-review",
+      "category": "shortcut",
+      "status": "active",
+      "core": false,
+      "codex_coupling": true,
+      "migration_status": "requires_antigravity_redesign",
+      "description": "Run a comprehensive code review"
+    },
+    {
+      "name": "configure-notifications",
+      "category": "utility",
+      "status": "active",
+      "core": false,
+      "codex_coupling": true,
+      "migration_status": "requires_antigravity_redesign",
+      "description": "Configure OMX notifications - unified entry point for all platforms"
+    },
+    {
+      "name": "deep-interview",
+      "category": "planning",
+      "status": "active",
+      "core": false,
+      "codex_coupling": true,
+      "migration_status": "requires_antigravity_redesign",
+      "description": "Socratic deep interview with mathematical ambiguity gating before execution"
+    },
+    {
+      "name": "deepsearch",
+      "category": "shortcut",
+      "status": "deprecated",
+      "core": false,
+      "codex_coupling": false,
+      "migration_status": "low_priority",
+      "description": "Deepsearch deprecated shim"
+    },
+    {
+      "name": "design",
+      "category": "shortcut",
+      "status": "active",
+      "core": false,
+      "codex_coupling": false,
+      "migration_status": "candidate",
+      "description": "Canonical repo-local DESIGN.md workflow for product, UI/UX, and frontend decision source of truth"
+    },
+    {
+      "name": "doctor",
+      "category": "utility",
+      "status": "active",
+      "core": false,
+      "codex_coupling": true,
+      "migration_status": "requires_antigravity_redesign",
+      "description": "Diagnose and fix oh-my-codex installation issues"
+    },
+    {
+      "name": "ecomode",
+      "category": "execution",
+      "status": "deprecated",
+      "core": false,
+      "codex_coupling": true,
+      "migration_status": "low_priority",
+      "description": "Ecomode deprecated shim"
+    },
+    {
+      "name": "frontend-ui-ux",
+      "category": "shortcut",
+      "status": "deprecated",
+      "core": false,
+      "codex_coupling": false,
+      "migration_status": "low_priority",
+      "description": "Deprecated compatibility shim for frontend UI/UX work; use $design or $visual-ralph"
+    },
+    {
+      "name": "git-master",
+      "category": "shortcut",
+      "status": "alias",
+      "core": false,
+      "codex_coupling": false,
+      "migration_status": "candidate",
+      "description": "Git expert for atomic commits, rebasing, and history management"
+    },
+    {
+      "name": "help",
+      "category": "utility",
+      "status": "deprecated",
+      "core": false,
+      "codex_coupling": false,
+      "migration_status": "low_priority",
+      "description": "Help deprecated skill"
+    },
+    {
+      "name": "hud",
+      "category": "utility",
+      "status": "active",
+      "core": false,
+      "codex_coupling": true,
+      "migration_status": "requires_antigravity_redesign",
+      "description": "Show or configure the OMX HUD (two-layer statusline)"
+    },
+    {
+      "name": "note",
+      "category": "utility",
+      "status": "deprecated",
+      "core": false,
+      "codex_coupling": false,
+      "migration_status": "low_priority",
+      "description": "Note deprecated shim"
+    },
+    {
+      "name": "omx-setup",
+      "category": "utility",
+      "status": "active",
+      "core": false,
+      "codex_coupling": true,
+      "migration_status": "requires_antigravity_redesign",
+      "description": "Setup and configure oh-my-codex using current CLI behavior"
+    },
+    {
+      "name": "performance-goal",
+      "category": "execution",
+      "status": "active",
+      "core": false,
+      "codex_coupling": true,
+      "migration_status": "requires_antigravity_redesign",
+      "description": "Run an evaluator-gated performance optimization workflow over Codex goal mode with durable OMX artifacts and safe goal handoffs."
+    },
+    {
+      "name": "pipeline",
+      "category": "execution",
+      "status": "active",
+      "core": false,
+      "codex_coupling": true,
+      "migration_status": "requires_antigravity_redesign",
+      "description": "Configurable pipeline orchestrator for sequencing stages"
+    },
+    {
+      "name": "plan",
+      "category": "planning",
+      "status": "active",
+      "core": false,
+      "codex_coupling": true,
+      "migration_status": "requires_antigravity_redesign",
+      "description": "Strategic planning with optional interview workflow"
+    },
+    {
+      "name": "prometheus-strict",
+      "category": "planning",
+      "status": "active",
+      "core": false,
+      "codex_coupling": true,
+      "migration_status": "requires_antigravity_redesign",
+      "description": "[OMX] Clean-room interview-driven planner: Metis clarifies, Momus challenges, Oracle synthesizes, then hands off to $ultragoal/$team."
+    },
+    {
+      "name": "ralph-init",
+      "category": "utility",
+      "status": "deprecated",
+      "core": false,
+      "codex_coupling": false,
+      "migration_status": "low_priority",
+      "description": "Ralph Init deprecated skill"
+    },
+    {
+      "name": "ralph",
+      "category": "execution",
+      "status": "active",
+      "core": true,
+      "codex_coupling": true,
+      "migration_status": "requires_antigravity_redesign",
+      "description": "Self-referential loop until task completion with architect verification"
+    },
+    {
+      "name": "ralplan",
+      "category": "planning",
+      "status": "active",
+      "core": true,
+      "codex_coupling": true,
+      "migration_status": "requires_antigravity_redesign",
+      "description": "Alias for $plan --consensus"
+    },
+    {
+      "name": "review",
+      "category": "shortcut",
+      "status": "deprecated",
+      "core": false,
+      "codex_coupling": false,
+      "migration_status": "low_priority",
+      "description": "Deprecated standalone review skill"
+    },
+    {
+      "name": "security-review",
+      "category": "shortcut",
+      "status": "deprecated",
+      "core": false,
+      "codex_coupling": false,
+      "migration_status": "low_priority",
+      "description": "Deprecated standalone security review skill"
+    },
+    {
+      "name": "skill",
+      "category": "utility",
+      "status": "active",
+      "core": false,
+      "codex_coupling": true,
+      "migration_status": "requires_antigravity_redesign",
+      "description": "Manage local skills - list, add, remove, search, edit, setup wizard"
+    },
+    {
+      "name": "swarm",
+      "category": "execution",
+      "status": "deprecated",
+      "core": false,
+      "codex_coupling": false,
+      "migration_status": "low_priority",
+      "description": "Deprecated compatibility shim for team execution"
+    },
+    {
+      "name": "tdd",
+      "category": "shortcut",
+      "status": "deprecated",
+      "core": false,
+      "codex_coupling": true,
+      "migration_status": "low_priority",
+      "description": "TDD deprecated shim"
+    },
+    {
+      "name": "team",
+      "category": "execution",
+      "status": "active",
+      "core": true,
+      "codex_coupling": true,
+      "migration_status": "requires_antigravity_redesign",
+      "description": "N coordinated agents on shared task list using tmux-based orchestration"
+    },
+    {
+      "name": "trace",
+      "category": "utility",
+      "status": "deprecated",
+      "core": false,
+      "codex_coupling": false,
+      "migration_status": "low_priority",
+      "description": "Trace deprecated shim"
+    },
+    {
+      "name": "ultragoal",
+      "category": "execution",
+      "status": "active",
+      "core": true,
+      "codex_coupling": true,
+      "migration_status": "requires_antigravity_redesign",
+      "description": "Create and execute durable repo-native multi-goal plans over Codex goal mode artifacts."
+    },
+    {
+      "name": "ultraqa",
+      "category": "execution",
+      "status": "active",
+      "core": false,
+      "codex_coupling": false,
+      "migration_status": "candidate",
+      "description": "Adversarial dynamic e2e QA workflow - generate hostile scenarios, test, verify, fix, report, and clean up"
+    },
+    {
+      "name": "ultrawork",
+      "category": "execution",
+      "status": "active",
+      "core": true,
+      "codex_coupling": true,
+      "migration_status": "requires_antigravity_redesign",
+      "description": "Parallel execution engine for high-throughput task completion"
+    },
+    {
+      "name": "visual-ralph",
+      "category": "shortcut",
+      "status": "active",
+      "core": false,
+      "codex_coupling": true,
+      "migration_status": "requires_antigravity_redesign",
+      "description": "Visual Ralph orchestration for frontend UI from generated references, static references, or live URL targets, using $ralph with built-in visual verdict and pixel-diff evidence until the implementation matches and leaves a reproducible design system."
+    },
+    {
+      "name": "visual-verdict",
+      "category": "shortcut",
+      "status": "deprecated",
+      "core": false,
+      "codex_coupling": false,
+      "migration_status": "low_priority",
+      "description": "Visual Verdict deprecated skill"
+    },
+    {
+      "name": "web-clone",
+      "category": "shortcut",
+      "status": "deprecated",
+      "core": false,
+      "codex_coupling": true,
+      "migration_status": "low_priority",
+      "description": "Web Clone deprecated shim"
+    },
+    {
+      "name": "wiki",
+      "category": "unknown",
+      "status": "unknown",
+      "core": false,
+      "codex_coupling": false,
+      "migration_status": "candidate",
+      "description": "Persistent markdown project wiki stored under repository omx_wiki with keyword search and lifecycle capture"
+    },
+    {
+      "name": "worker",
+      "category": "utility",
+      "status": "internal",
+      "core": false,
+      "codex_coupling": true,
+      "migration_status": "requires_antigravity_redesign",
+      "description": "Team worker protocol (ACK, mailbox, task lifecycle) for tmux-based OMX teams"
+    }
+  ],
+  "prompts": [
+    {
+      "name": "analyst",
+      "migration_status": "candidate_prompt_review",
+      "source": "prompts/analyst.md"
+    },
+    {
+      "name": "api-reviewer",
+      "migration_status": "candidate_prompt_review",
+      "source": "prompts/api-reviewer.md"
+    },
+    {
+      "name": "architect",
+      "migration_status": "candidate_prompt_review",
+      "source": "prompts/architect.md"
+    },
+    {
+      "name": "build-fixer",
+      "migration_status": "candidate_prompt_review",
+      "source": "prompts/build-fixer.md"
+    },
+    {
+      "name": "code-reviewer",
+      "migration_status": "candidate_prompt_review",
+      "source": "prompts/code-reviewer.md"
+    },
+    {
+      "name": "code-simplifier",
+      "migration_status": "candidate_prompt_review",
+      "source": "prompts/code-simplifier.md"
+    },
+    {
+      "name": "critic",
+      "migration_status": "candidate_prompt_review",
+      "source": "prompts/critic.md"
+    },
+    {
+      "name": "debugger",
+      "migration_status": "candidate_prompt_review",
+      "source": "prompts/debugger.md"
+    },
+    {
+      "name": "dependency-expert",
+      "migration_status": "candidate_prompt_review",
+      "source": "prompts/dependency-expert.md"
+    },
+    {
+      "name": "designer",
+      "migration_status": "candidate_prompt_review",
+      "source": "prompts/designer.md"
+    },
+    {
+      "name": "executor",
+      "migration_status": "candidate_prompt_review",
+      "source": "prompts/executor.md"
+    },
+    {
+      "name": "explore-harness",
+      "migration_status": "candidate_prompt_review",
+      "source": "prompts/explore-harness.md"
+    },
+    {
+      "name": "explore",
+      "migration_status": "candidate_prompt_review",
+      "source": "prompts/explore.md"
+    },
+    {
+      "name": "git-master",
+      "migration_status": "candidate_prompt_review",
+      "source": "prompts/git-master.md"
+    },
+    {
+      "name": "information-architect",
+      "migration_status": "candidate_prompt_review",
+      "source": "prompts/information-architect.md"
+    },
+    {
+      "name": "performance-reviewer",
+      "migration_status": "candidate_prompt_review",
+      "source": "prompts/performance-reviewer.md"
+    },
+    {
+      "name": "planner",
+      "migration_status": "candidate_prompt_review",
+      "source": "prompts/planner.md"
+    },
+    {
+      "name": "product-analyst",
+      "migration_status": "candidate_prompt_review",
+      "source": "prompts/product-analyst.md"
+    },
+    {
+      "name": "product-manager",
+      "migration_status": "candidate_prompt_review",
+      "source": "prompts/product-manager.md"
+    },
+    {
+      "name": "prometheus-strict-metis",
+      "migration_status": "candidate_prompt_review",
+      "source": "prompts/prometheus-strict-metis.md"
+    },
+    {
+      "name": "prometheus-strict-momus",
+      "migration_status": "candidate_prompt_review",
+      "source": "prompts/prometheus-strict-momus.md"
+    },
+    {
+      "name": "prometheus-strict-oracle",
+      "migration_status": "candidate_prompt_review",
+      "source": "prompts/prometheus-strict-oracle.md"
+    },
+    {
+      "name": "qa-tester",
+      "migration_status": "candidate_prompt_review",
+      "source": "prompts/qa-tester.md"
+    },
+    {
+      "name": "quality-reviewer",
+      "migration_status": "candidate_prompt_review",
+      "source": "prompts/quality-reviewer.md"
+    },
+    {
+      "name": "quality-strategist",
+      "migration_status": "candidate_prompt_review",
+      "source": "prompts/quality-strategist.md"
+    },
+    {
+      "name": "researcher",
+      "migration_status": "candidate_prompt_review",
+      "source": "prompts/researcher.md"
+    },
+    {
+      "name": "scholastic",
+      "migration_status": "candidate_prompt_review",
+      "source": "prompts/scholastic.md"
+    },
+    {
+      "name": "security-reviewer",
+      "migration_status": "candidate_prompt_review",
+      "source": "prompts/security-reviewer.md"
+    },
+    {
+      "name": "sisyphus-lite",
+      "migration_status": "candidate_prompt_review",
+      "source": "prompts/sisyphus-lite.md"
+    },
+    {
+      "name": "style-reviewer",
+      "migration_status": "candidate_prompt_review",
+      "source": "prompts/style-reviewer.md"
+    },
+    {
+      "name": "team-executor",
+      "migration_status": "candidate_prompt_review",
+      "source": "prompts/team-executor.md"
+    },
+    {
+      "name": "team-orchestrator",
+      "migration_status": "candidate_prompt_review",
+      "source": "prompts/team-orchestrator.md"
+    },
+    {
+      "name": "test-engineer",
+      "migration_status": "candidate_prompt_review",
+      "source": "prompts/test-engineer.md"
+    },
+    {
+      "name": "ux-researcher",
+      "migration_status": "candidate_prompt_review",
+      "source": "prompts/ux-researcher.md"
+    },
+    {
+      "name": "verifier",
+      "migration_status": "candidate_prompt_review",
+      "source": "prompts/verifier.md"
+    },
+    {
+      "name": "vision",
+      "migration_status": "candidate_prompt_review",
+      "source": "prompts/vision.md"
+    },
+    {
+      "name": "writer",
+      "migration_status": "candidate_prompt_review",
+      "source": "prompts/writer.md"
+    }
+  ],
+  "hooks": [
+    {
+      "name": "agents-overlay.test",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/__tests__/agents-overlay.test.js"
+    },
+    {
+      "name": "analyze-routing-contract.test",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/__tests__/analyze-routing-contract.test.js"
+    },
+    {
+      "name": "analyze-skill-contract.test",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/__tests__/analyze-skill-contract.test.js"
+    },
+    {
+      "name": "anti-slop-workflow.test",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/__tests__/anti-slop-workflow.test.js"
+    },
+    {
+      "name": "autopilot-skill-contract.test",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/__tests__/autopilot-skill-contract.test.js"
+    },
+    {
+      "name": "best-practice-research-skill.test",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/__tests__/best-practice-research-skill.test.js"
+    },
+    {
+      "name": "clawhip-event-contract.test",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/__tests__/clawhip-event-contract.test.js"
+    },
+    {
+      "name": "code-review-skill-contract.test",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/__tests__/code-review-skill-contract.test.js"
+    },
+    {
+      "name": "codebase-map.test",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/__tests__/codebase-map.test.js"
+    },
+    {
+      "name": "consensus-execution-handoff.test",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/__tests__/consensus-execution-handoff.test.js"
+    },
+    {
+      "name": "debugger-log-recency-contract.test",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/__tests__/debugger-log-recency-contract.test.js"
+    },
+    {
+      "name": "deep-interview-contract.test",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/__tests__/deep-interview-contract.test.js"
+    },
+    {
+      "name": "design-skill.test",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/__tests__/design-skill.test.js"
+    },
+    {
+      "name": "explicit-terminal-stop-docs-contract.test",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/__tests__/explicit-terminal-stop-docs-contract.test.js"
+    },
+    {
+      "name": "explicit-terminal-stop-model-docs-contract.test",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/__tests__/explicit-terminal-stop-model-docs-contract.test.js"
+    },
+    {
+      "name": "explore-routing.test",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/__tests__/explore-routing.test.js"
+    },
+    {
+      "name": "explore-sparkshell-guidance-contract.test",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/__tests__/explore-sparkshell-guidance-contract.test.js"
+    },
+    {
+      "name": "foreground-isolation-contract.test",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/__tests__/foreground-isolation-contract.test.js"
+    },
+    {
+      "name": "keyword-detector.test",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/__tests__/keyword-detector.test.js"
+    },
+    {
+      "name": "notify-fallback-watcher.test",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/__tests__/notify-fallback-watcher.test.js"
+    },
+    {
+      "name": "notify-hook-all-workers-idle.test",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/__tests__/notify-hook-all-workers-idle.test.js"
+    },
+    {
+      "name": "notify-hook-auto-nudge.test",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/__tests__/notify-hook-auto-nudge.test.js"
+    },
+    {
+      "name": "notify-hook-cross-worktree-heartbeat.test",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/__tests__/notify-hook-cross-worktree-heartbeat.test.js"
+    },
+    {
+      "name": "notify-hook-managed-tmux.test",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/__tests__/notify-hook-managed-tmux.test.js"
+    },
+    {
+      "name": "notify-hook-modules.test",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/__tests__/notify-hook-modules.test.js"
+    },
+    {
+      "name": "notify-hook-native-dispatch-contract.test",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/__tests__/notify-hook-native-dispatch-contract.test.js"
+    },
+    {
+      "name": "notify-hook-non-omx-guard.test",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/__tests__/notify-hook-non-omx-guard.test.js"
+    },
+    {
+      "name": "notify-hook-ralph-resume.test",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/__tests__/notify-hook-ralph-resume.test.js"
+    },
+    {
+      "name": "notify-hook-regression-205.test",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/__tests__/notify-hook-regression-205.test.js"
+    },
+    {
+      "name": "notify-hook-session-idle-dedupe.test",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/__tests__/notify-hook-session-idle-dedupe.test.js"
+    },
+    {
+      "name": "notify-hook-session-scope.test",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/__tests__/notify-hook-session-scope.test.js"
+    },
+    {
+      "name": "notify-hook-team-dispatch.test",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/__tests__/notify-hook-team-dispatch.test.js"
+    },
+    {
+      "name": "notify-hook-team-leader-nudge.test",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/__tests__/notify-hook-team-leader-nudge.test.js"
+    },
+    {
+      "name": "notify-hook-team-tmux-guard.test",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/__tests__/notify-hook-team-tmux-guard.test.js"
+    },
+    {
+      "name": "notify-hook-team-worker-fail-closed.test",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/__tests__/notify-hook-team-worker-fail-closed.test.js"
+    },
+    {
+      "name": "notify-hook-tmux-heal.test",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/__tests__/notify-hook-tmux-heal.test.js"
+    },
+    {
+      "name": "notify-hook-tmux-scrollback.test",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/__tests__/notify-hook-tmux-scrollback.test.js"
+    },
+    {
+      "name": "notify-hook-visual-verdict.test",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/__tests__/notify-hook-visual-verdict.test.js"
+    },
+    {
+      "name": "notify-hook-worker-idle.test",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/__tests__/notify-hook-worker-idle.test.js"
+    },
+    {
+      "name": "openclaw-setup-contract.test",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/__tests__/openclaw-setup-contract.test.js"
+    },
+    {
+      "name": "pre-context-gate-skills.test",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/__tests__/pre-context-gate-skills.test.js"
+    },
+    {
+      "name": "prometheus-strict-contract.test",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/__tests__/prometheus-strict-contract.test.js"
+    },
+    {
+      "name": "prompt-guidance-catalog.test",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/__tests__/prompt-guidance-catalog.test.js"
+    },
+    {
+      "name": "prompt-guidance-contract.test",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/__tests__/prompt-guidance-contract.test.js"
+    },
+    {
+      "name": "prompt-guidance-fragments.test",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/__tests__/prompt-guidance-fragments.test.js"
+    },
+    {
+      "name": "prompt-guidance-scenarios.test",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/__tests__/prompt-guidance-scenarios.test.js"
+    },
+    {
+      "name": "prompt-guidance-test-helpers",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/__tests__/prompt-guidance-test-helpers.js"
+    },
+    {
+      "name": "prompt-guidance-wave-two.test",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/__tests__/prompt-guidance-wave-two.test.js"
+    },
+    {
+      "name": "prompt-orchestration-boundary.test",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/__tests__/prompt-orchestration-boundary.test.js"
+    },
+    {
+      "name": "prompt-refactor-contract.test",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/__tests__/prompt-refactor-contract.test.js"
+    },
+    {
+      "name": "prompt-team-routing.test",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/__tests__/prompt-team-routing.test.js"
+    },
+    {
+      "name": "research-workflow-boundaries.test",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/__tests__/research-workflow-boundaries.test.js"
+    },
+    {
+      "name": "session.test",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/__tests__/session.test.js"
+    },
+    {
+      "name": "skill-catalog-hygiene.test",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/__tests__/skill-catalog-hygiene.test.js"
+    },
+    {
+      "name": "skill-guidance-contract.test",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/__tests__/skill-guidance-contract.test.js"
+    },
+    {
+      "name": "task-size-detector.test",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/__tests__/task-size-detector.test.js"
+    },
+    {
+      "name": "team-runtime-gating-docs-contract.test",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/__tests__/team-runtime-gating-docs-contract.test.js"
+    },
+    {
+      "name": "tmux-hook-engine-types-sync.test",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/__tests__/tmux-hook-engine-types-sync.test.js"
+    },
+    {
+      "name": "tmux-hook-engine.test",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/__tests__/tmux-hook-engine.test.js"
+    },
+    {
+      "name": "triage-config.test",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/__tests__/triage-config.test.js"
+    },
+    {
+      "name": "triage-heuristic.test",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/__tests__/triage-heuristic.test.js"
+    },
+    {
+      "name": "triage-state.test",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/__tests__/triage-state.test.js"
+    },
+    {
+      "name": "visual-ralph-skill.test",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/__tests__/visual-ralph-skill.test.js"
+    },
+    {
+      "name": "visual-verdict-loop.test",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/__tests__/visual-verdict-loop.test.js"
+    },
+    {
+      "name": "wiki-docs-contract.test",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/__tests__/wiki-docs-contract.test.js"
+    },
+    {
+      "name": "agents-overlay",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/agents-overlay.js"
+    },
+    {
+      "name": "index.test",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/code-simplifier/__tests__/index.test.js"
+    },
+    {
+      "name": "index",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/code-simplifier/index.js"
+    },
+    {
+      "name": "codebase-map",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/codebase-map.js"
+    },
+    {
+      "name": "deep-interview-config-instruction",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/deep-interview-config-instruction.js"
+    },
+    {
+      "name": "explore-routing",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/explore-routing.js"
+    },
+    {
+      "name": "dispatcher.test",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/extensibility/__tests__/dispatcher.test.js"
+    },
+    {
+      "name": "events.test",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/extensibility/__tests__/events.test.js"
+    },
+    {
+      "name": "example-hook-plugins.test",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/extensibility/__tests__/example-hook-plugins.test.js"
+    },
+    {
+      "name": "loader.test",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/extensibility/__tests__/loader.test.js"
+    },
+    {
+      "name": "logging.test",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/extensibility/__tests__/logging.test.js"
+    },
+    {
+      "name": "plugin-runner.test",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/extensibility/__tests__/plugin-runner.test.js"
+    },
+    {
+      "name": "runtime.test",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/extensibility/__tests__/runtime.test.js"
+    },
+    {
+      "name": "sdk-public-surface.test",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/extensibility/__tests__/sdk-public-surface.test.js"
+    },
+    {
+      "name": "sdk.test",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/extensibility/__tests__/sdk.test.js"
+    },
+    {
+      "name": "dispatcher",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/extensibility/dispatcher.js"
+    },
+    {
+      "name": "events",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/extensibility/events.js"
+    },
+    {
+      "name": "index",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/extensibility/index.js"
+    },
+    {
+      "name": "loader",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/extensibility/loader.js"
+    },
+    {
+      "name": "logging",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/extensibility/logging.js"
+    },
+    {
+      "name": "plugin-runner",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/extensibility/plugin-runner.js"
+    },
+    {
+      "name": "runtime",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/extensibility/runtime.js"
+    },
+    {
+      "name": "sdk",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/extensibility/sdk.js"
+    },
+    {
+      "name": "logging",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/extensibility/sdk/logging.js"
+    },
+    {
+      "name": "paths",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/extensibility/sdk/paths.js"
+    },
+    {
+      "name": "plugin-state",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/extensibility/sdk/plugin-state.js"
+    },
+    {
+      "name": "runtime-state",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/extensibility/sdk/runtime-state.js"
+    },
+    {
+      "name": "tmux",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/extensibility/sdk/tmux.js"
+    },
+    {
+      "name": "types",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/extensibility/types.js"
+    },
+    {
+      "name": "keyword-detector",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/keyword-detector.js"
+    },
+    {
+      "name": "keyword-registry",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/keyword-registry.js"
+    },
+    {
+      "name": "prompt-guidance-contract",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/prompt-guidance-contract.js"
+    },
+    {
+      "name": "session",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/session.js"
+    },
+    {
+      "name": "task-size-detector",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/task-size-detector.js"
+    },
+    {
+      "name": "triage-config",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/triage-config.js"
+    },
+    {
+      "name": "triage-heuristic",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/triage-heuristic.js"
+    },
+    {
+      "name": "triage-state",
+      "migration_status": "requires_antigravity_hook_surface",
+      "source": "dist/hooks/triage-state.js"
+    }
+  ],
+  "next_steps": [
+    "Port prompts as inert catalog entries first",
+    "Design Antigravity skill install target before copying SKILL.md files",
+    "Map dist/hooks to antigravity-cli hook surface before enabling runtime hooks",
+    "Keep Codex-goal skills blocked until Antigravity equivalent exists"
+  ]
+}

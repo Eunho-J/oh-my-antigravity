@@ -14,7 +14,9 @@
 - `oma doctor`: `node` 및 `antigravity-cli`/`agy` alias 존재 확인
 - `oma setup`: `.oma/manifest.json` 워크스페이스 골격 생성
 - `oma status`: 런타임 대상, 실행 바이너리, `.oma` manifest 상태 요약
-- `oma inventory`: `omx` 기능을 `oma` 이식 우선순위로 분류
+- `oma inventory
+oma catalog`: `omx` command를 `oma` 이식 우선순위로 분류
+- `oma catalog`: `omx` skills/prompts/hooks/subagent 자산의 이식 상태 요약
 - 포팅 계획 문서
 
 아직 포함하지 않은 것:
@@ -31,6 +33,7 @@ oma doctor
 oma setup /path/to/project
 oma status /path/to/project
 oma inventory
+oma catalog
 ```
 
 ## 원칙
