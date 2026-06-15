@@ -1,0 +1,43 @@
+{
+  "schema": "oma.omx_port_inventory.v1",
+  "source": {
+    "package": "oh-my-codex",
+    "observed_version": "0.18.8",
+    "observed_bin": "omx",
+    "observed_at_kst": "2026-06-15"
+  },
+  "target": {
+    "package": "oh-my-antigravity",
+    "bin": "oma",
+    "runtime": "antigravity-cli",
+    "local_alias_accepted": "agy"
+  },
+  "categories": {
+    "immediate_candidates": {
+      "description": "Antigravity/Codex coupling is low; safe to port as OMA CLI primitives first.",
+      "commands": ["doctor", "setup", "status", "cleanup", "version"]
+    },
+    "antigravity_research_required": {
+      "description": "Potentially valuable, but requires direct Antigravity/antigravity-cli surface mapping before implementation.",
+      "commands": ["hooks", "tmux-hook", "team", "sidecar", "sparkshell", "session", "ask", "mcp-serve"]
+    },
+    "codex_coupled_hold": {
+      "description": "Codex-native behavior or state assumptions; hold until an Antigravity-native equivalent is designed.",
+      "commands": ["exec", "resume", "ultragoal", "performance-goal", "autoresearch-goal", "imagegen", "auth", "agents", "agents-init", "deepinit"]
+    },
+    "state_memory_rebuild": {
+      "description": "Can be ported only after OMA owns an Antigravity-safe state/memory contract.",
+      "commands": ["state", "notepad", "project-memory", "trace", "code-intel", "wiki"]
+    },
+    "deprecated_or_low_priority": {
+      "description": "Do not prioritize unless a concrete Antigravity use case appears.",
+      "commands": ["explore", "autoresearch"]
+    }
+  },
+  "next_wave": [
+    "inventory",
+    "doctor",
+    "status",
+    "setup"
+  ]
+}

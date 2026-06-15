@@ -9,6 +9,7 @@
 - `oma doctor`: `antigravity-cli`/`agy` alias, `node`, MCP schema directory, workspace 쓰기 가능 여부 진단
 - `oma setup`: `.oma/` 작업 상태 디렉터리와 Antigravity 친화 템플릿 생성
 - `oma status`: 현재 workspace의 `.oma` 상태와 `antigravity-cli`/`agy` 호환 실행 표면 요약
+- `oma inventory`: `omx` 기능의 이식 가능성/보류 사유를 표준 장부로 출력
 - `oma mcp-serve`: 필요한 경우 oma 전용 report-only MCP 도구 노출
 
 ## 3. 포팅 금지선
@@ -35,3 +36,8 @@
 3. `oma doctor`에 MCP/config/schema 진단 추가.
 4. `oma status`를 workspace 상태와 runtime alias 진단의 표준 보고면으로 확장.
 5. 최소 npm 패키지 배포 가능성 검증.
+
+
+## 6. 1차 인벤토리
+
+정형 인벤토리는 [`docs/omx-port-inventory.json`](./omx-port-inventory.json)에 둔다. `oma inventory`는 이 장부를 읽어 사람이 보는 요약 또는 `--json` 출력을 제공한다.

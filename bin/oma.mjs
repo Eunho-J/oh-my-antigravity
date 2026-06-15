@@ -1,9 +1,12 @@
 #!/usr/bin/env node
 import { spawnSync } from 'node:child_process';
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
-import { join, resolve } from 'node:path';
+import { dirname, join, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 const VERSION = '0.1.0';
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const REPO_ROOT = resolve(__dirname, '..');
 const args = process.argv.slice(2);
 const command = args[0] ?? 'help';
 
@@ -68,7 +71,7 @@ function workspaceInfo(target = process.cwd()) {
 }
 
 function printHelp() {
-  console.log(`oh-my-antigravity (oma) ${VERSION}\n\nUsage:\n  oma                 Show help\n  oma version         Show version\n  oma doctor [--json] Check Antigravity / antigravity-cli runtime assumptions\n  oma setup [path]    Create a minimal .oma workspace scaffold\n  oma status [path]   Show current .oma workspace status\n\nCurrent status:\n  Initial porting scaffold. Runtime integration targets Antigravity / antigravity-cli, not Codex.`);
+  console.log(`oh-my-antigravity (oma) ${VERSION}\n\nUsage:\n  oma                 Show help\n  oma version         Show version\n  oma doctor [--json] Check Antigravity / antigravity-cli runtime assumptions\n  oma setup [path]    Create a minimal .oma workspace scaffold\n  oma status [path]   Show current .oma workspace status\n  oma inventory [--json]\n                      Show omx-to-oma port classification\n\nCurrent status:\n  Initial porting scaffold. Runtime integration targets Antigravity / antigravity-cli, not Codex.`);
 }
 
 function doctor() {
@@ -111,6 +114,28 @@ function setup() {
   const payload = { ok: true, workspace: workspaceInfo(target) };
   if (hasFlag('--json')) console.log(JSON.stringify(payload, null, 2));
   else console.log(`oma workspace scaffold ready: ${dir}`);
+  return 0;
+}
+
+
+function readInventory() {
+  const path = join(REPO_ROOT, 'docs', 'omx-port-inventory.json');
+  return { path, data: JSON.parse(readFileSync(path, 'utf8')) };
+}
+
+function inventory() {
+  const { path, data } = readInventory();
+  if (hasFlag('--json')) {
+    console.log(JSON.stringify({ ok: true, path, inventory: data }, null, 2));
+    return 0;
+  }
+  console.log(`oma ${VERSION} inventory`);
+  console.log(`- source: ${data.source.package} ${data.source.observed_version}`);
+  console.log(`- target: ${data.target.package} (${data.target.bin}) -> ${data.target.runtime}`);
+  for (const [name, group] of Object.entries(data.categories)) {
+    console.log(`- ${name}: ${group.commands.join(', ')}`);
+  }
+  console.log(`- next wave: ${data.next_wave.join(', ')}`);
   return 0;
 }
 
@@ -159,6 +184,9 @@ switch (command) {
     break;
   case 'status':
     exitCode = status();
+    break;
+  case 'inventory':
+    exitCode = inventory();
     break;
   default:
     console.error(`Unknown command: ${command}`);
