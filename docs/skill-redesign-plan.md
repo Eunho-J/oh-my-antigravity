@@ -36,3 +36,8 @@ node --check bin/oma.mjs
 node bin/oma.mjs skills --audit --json
 npm test
 ```
+
+
+## 9. Adaptation contract
+
+Skill conversion rules are now centralized in [`docs/skill-adaptation-contract.md`](./skill-adaptation-contract.md). No staged skill may be runtime-enabled until it satisfies that contract and passes `oma skills --audit --json`.
