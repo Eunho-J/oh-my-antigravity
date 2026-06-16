@@ -75,6 +75,13 @@
       "status": "adapted_candidate",
       "install_enabled": false,
       "enablement_gate": "Runtime install command and Antigravity skill target path are not implemented yet"
+    },
+    {
+      "name": "best-practice-research",
+      "path": "skills/adapted/best-practice-research/SKILL.md",
+      "status": "adapted_candidate",
+      "install_enabled": false,
+      "enablement_gate": "Runtime install command and Antigravity skill target path are not implemented yet"
     }
   ]
 }
