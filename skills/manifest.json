@@ -82,6 +82,13 @@
       "status": "adapted_candidate",
       "install_enabled": false,
       "enablement_gate": "Runtime install command and Antigravity skill target path are not implemented yet"
+    },
+    {
+      "name": "ask",
+      "path": "skills/adapted/ask/SKILL.md",
+      "status": "adapted_candidate",
+      "install_enabled": false,
+      "enablement_gate": "Runtime install command and Antigravity skill target path are not implemented yet"
     }
   ]
 }
