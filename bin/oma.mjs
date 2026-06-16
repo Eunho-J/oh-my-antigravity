@@ -130,13 +130,13 @@ function auditSkillFiles() {
   const manifestPath = join(REPO_ROOT, 'skills', 'manifest.json');
   const manifest = JSON.parse(readFileSync(manifestPath, 'utf8'));
   const patterns = [
-    { id: 'omx_command', severity: 'adapt', regex: /\bomx\s+[a-z-]+|\$[a-z-]+/g },
+    { id: 'omx_command', severity: 'adapt', regex: /\bomx\s+[a-z-]+|\$(?:ralplan|ralph|visual-ralph|team|deep-interview|autoresearch-goal|performance-goal|ultragoal|ultraqa|swarm|pipeline|autopilot|ecomode|ultrawork)\b/g },
     { id: 'omx_state_path', severity: 'adapt', regex: /\.omx\//g },
     { id: 'codex_reference', severity: 'redesign', regex: /\bCodex\b|\bcodex\b|\.codex/g },
     { id: 'goal_tool_reference', severity: 'redesign', regex: /\b(create_goal|get_goal|update_goal)\b/g },
     { id: 'tmux_reference', severity: 'research', regex: /\btmux\b/g },
   ];
-  const reports = manifest.candidates.map((item) => {
+  const scan = (items, kind) => items.map((item) => {
     const filePath = join(REPO_ROOT, item.path);
     const text = readFileSync(filePath, 'utf8');
     const findings = patterns.flatMap((pattern) => {
@@ -153,20 +153,29 @@ function auditSkillFiles() {
     const hasAdapt = findings.some((finding) => finding.severity === 'adapt' || finding.severity === 'research');
     return {
       name: item.name,
+      kind,
       path: item.path,
       migration_readiness: hasRedesign ? 'requires_redesign' : (hasAdapt ? 'requires_adaptation' : 'portable_candidate'),
       findings,
     };
   });
+  const stagedReports = scan(manifest.candidates ?? [], 'staged');
+  const adaptedReports = scan(manifest.adapted_candidates ?? [], 'adapted');
+  const summarize = (reports) => ({
+    portable_candidate: reports.filter((report) => report.migration_readiness === 'portable_candidate').length,
+    requires_adaptation: reports.filter((report) => report.migration_readiness === 'requires_adaptation').length,
+    requires_redesign: reports.filter((report) => report.migration_readiness === 'requires_redesign').length,
+  });
+  const reports = [...stagedReports, ...adaptedReports];
   return {
     schema: 'oma.skill_audit.v1',
     install_enabled: manifest.install_enabled,
     scanned_skills: reports.length,
-    summary: {
-      portable_candidate: reports.filter((report) => report.migration_readiness === 'portable_candidate').length,
-      requires_adaptation: reports.filter((report) => report.migration_readiness === 'requires_adaptation').length,
-      requires_redesign: reports.filter((report) => report.migration_readiness === 'requires_redesign').length,
-    },
+    scanned_staged_skills: stagedReports.length,
+    scanned_adapted_skills: adaptedReports.length,
+    summary: summarize(reports),
+    staged_summary: summarize(stagedReports),
+    adapted_summary: summarize(adaptedReports),
     reports,
   };
 }
@@ -180,8 +189,9 @@ function skills() {
     }
     console.log(`oma ${VERSION} skills audit`);
     console.log(`- install enabled: ${audit.install_enabled}`);
-    console.log(`- scanned: ${audit.scanned_skills}`);
+    console.log(`- scanned: ${audit.scanned_skills} (${audit.scanned_staged_skills} staged / ${audit.scanned_adapted_skills} adapted)`);
     console.log(`- readiness: ${audit.summary.portable_candidate} portable / ${audit.summary.requires_adaptation} adaptation / ${audit.summary.requires_redesign} redesign`);
+    console.log(`- adapted readiness: ${audit.adapted_summary.portable_candidate} portable / ${audit.adapted_summary.requires_adaptation} adaptation / ${audit.adapted_summary.requires_redesign} redesign`);
     for (const report of audit.reports) {
       console.log(`- ${report.name}: ${report.migration_readiness}`);
     }
